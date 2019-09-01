@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 常用指令</title>
+    <title>v-bind</title>
+    <link rel="stylesheet" href="../css/demo.css"/>
+</head>
+
+<body>
+<div id="app">
+
+    <h1>v-if指令</h1>
+    <h1 v-if="age > 18">小楠：我大于18岁</h1>
+    <h1 v-else>小楠：我小于18岁</h1>
+    <hr/>
+
+    <h1>v-show指令</h1>
+    <h1 v-show="age > 18">小楠：我大于18岁</h1>
+    <h1 v-else>小楠：我小于18岁</h1>
+    <hr/>
+
+    <h1>v-for指令</h1>
+    <h1 v-for="n in pageNum">第{{n}}页</h1>
+    <hr/>
+
+    <h1>v-bind指令</h1>
+    <h1 v-bind:class="age === 25? 'active' : '' ">我25岁了</h1>
+    <h1 :class="age === 25? 'active' : '' ">我25岁了</h1>
+    <hr/>
+
+    <h1>v-on指令</h1>
+    <button v-on:click="sayHello(25)">我25岁了</button>
+    <br/>
+    <button @click="sayHello(25)">我25岁了</button>
+    <hr/>
+
+</div>
+</body>
+
+<script src="../js/vue.js"></script>
+<script>
+    //这是ViewModel
+    var vue = new Vue({
+        el: '#app',
+        //这是Model
+        data: {
+            age: 25,
+            pageNum: [1, 2, 3]
+        },
+        methods: {
+            sayHello(age) {
+                alert('hello: ' + age);
+            }
+        }
+    });
+</script>
+</html>
