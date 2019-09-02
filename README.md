@@ -95,8 +95,14 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:23.1.1'
     implementation 'com.android.support:support-v4:23.1.1'
     implementation 'com.android.support:appcompat-v7:23.1.1'
+    
+    // 直接使用Creator SDK
+    // Creator SDK针对原生的Weex SDK进行了大量优化和扩展，如：新增共享元素动画，列表动画，动画属性控制，提供多种样式的系统弹框和Flyme风格的主题组件。用js也可以开发出在体验上和原生native一致的效果
+    implementation "com.meizu.creator.commons:creatorsdk:${versions.flyme_creator}"
 }
 ```
+
+
     
 2. 配置混淆规则：
 ```proguard
@@ -266,8 +272,309 @@ Vue.js的指令是以v-开头的，它们作用于HTML元素，指令提供了�
     * v-for指令
     * v-bind指令
     * v-on指令
+    * v-model指令
 * Vue.js具有良好的扩展性，我们也可以开发一些自定义的指令
 
-##### 2.3.2 v-if指令
+##### 2.3.2 v-if和v-show指令
 
-https://www.cnblogs.com/keepfool/p/5619070.html
+* v-if是条件渲染指令，它根据表达式的真假来删除和插入元素，基本语法如下：
+
+```vue
+v-if="expression"
+v-show="expression"
+```
+
+* expression是一个返回bool值的表达式，表达式可以是一个bool属性，也可以是一个返回bool的运算式、方法。
+* v-if指令是根据条件表达式的值来执行元素的插入或者删除行为
+* v-show也是条件渲染指令，和v-if指令不同的是，使用v-show指令的元素始终会被渲染到HTML，它只是简单地为元素设置CSS的style属性（style="display:none"）
+
+##### 2.3.3 v-else指令
+
+* 可以用v-else指令为v-if或v-show添加一个“else块”。v-else元素必须立即跟在v-if或v-show元素的后面——否则它不能被识别。
+* 示例如下：
+
+```html
+<h1>v-if指令</h1>
+<h1 v-if="age > 18">小楠：我大于18岁</h1>
+<h1 v-else>小楠：我小于18岁</h1>
+<hr/>
+
+<h1>v-show指令</h1>
+<h1 v-show="age > 18">小楠：我大于18岁</h1>
+<h1 v-else>小楠：我小于18岁</h1>
+<hr/>
+```
+
+* 另外还有v-else-if指令
+
+##### 2.3.4 v-for指令
+
+* v-for指令基于一个数组渲染一个列表，它和JavaScript的遍历语法相似：
+
+```vue
+v-for="item in items"
+```
+
+* items是一个数组，item是当前被遍历的数组元素。
+
+##### 2.3.5 v-bind指令
+
+* v-bind指令可以在其名称后面带一个参数，中间放一个冒号隔开，这个参数通常是HTML元素的特性（attribute），例如：v-bind:class
+* 基本语法如下：
+
+```vue
+v-bind:argument="expression"
+:argument="expression"
+```
+
+##### 2.3.6 v-on指令
+
+* v-on指令用于给监听DOM事件，它的用语法和v-bind是类似的，例如监听<a>元素的点击事件
+* 示例：
+
+```html
+<a v-on:click="doSomething">
+<a @click="doSomething">
+```
+
+##### 2.3.7 v-model指令
+
+* MVVM模式本身是实现了双向绑定的，在Vue.js中可以使用v-model指令在表单元素上创建双向数据绑定。
+* v-model可以实现View中的数据（一般都是值value属性的值）动态跟model（即Vue中的data）绑定，示例如下：
+
+```html
+<input type="text" v-model="message"/>
+```
+
+* 上面的例子中，用户改变input的内容，那么message也会实时跟着变化，类似于给EditText添加了TextChangedListener一样
+
+### 2.4 Vue的组件（Component）
+
+* 组件系统是Vue.js其中一个重要的概念，它提供了一种抽象，让我们可以使用独立可复用的小组件来构建大型应用，任意类型的应用界面都可以抽象为一个组件树：
+
+![Vue的组件](https://upload-images.jianshu.io/upload_images/2570030-bee912711f4232d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+* 组件可以扩展HTML元素，封装可重用的HTML代码，我们可以将组件看作自定义的HTML元素。
+
+### 3.1 Weex中的基本概念
+
+![Weex扩展机制](https://upload-images.jianshu.io/upload_images/2570030-1832a3877167ea52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+### 3.2 Weex的组件（Component）
+
+* Weex提供了一些列的内置组件给我们使用，这些组件都可以跟Android的控制做类比：
+
+![Weex内置组件](https://upload-images.jianshu.io/upload_images/2570030-649d94f3993ee68a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+* Creator SDK中也提供了一下扩展组件给我们使用：
+
+![Creator SDK中的扩展组件](https://upload-images.jianshu.io/upload_images/2570030-efe65e165f5cc1c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+组件的使用参考链接：
+
+[官方文档](https://weex.apache.org/zh/docs/components/a.html)
+[Creator SDK官方文档](http://apps.flyme.cn/docs/book.html?bookId=59df3445a5a0a611eee9f119&doc=59e9640c67e2274f086396a3)
+
+### 3.3 自定义组件（Component）
+
+当原生组件不能满足我们，就需要自定义组件，下面我们结合自定义组件来介绍组件的使用，自定义组件的基本步骤如下。
+
+* 实现自定义控件
+* 示例如下（已省略无关代码）：
+
+```java
+public class FmRefreshAnimView extends View {
+
+    public void setProgress(float progress) {
+
+    }
+
+    public void start() {
+
+    }
+
+    public void stop() {
+
+    }
+}
+```
+
+* 继承WXComponent，实现initComponentHostView方法，返回你的自定义控件
+* 可以通过@JSMethod注解对外提供JS方法
+* 可以通过@WXComponentProp注解对外提供JS属性，其中参数name是指属性名称
+* 示例如下（已省略无关代码）：
+
+```java
+public class FmRefreshAnim extends WXComponent<FmRefreshAnimView> {
+
+    public FmRefreshAnim(WXSDKInstance instance, WXDomObject dom, WXVContainer parent) {
+        super(instance, dom, parent);
+    }
+
+    @Override
+    protected FmRefreshAnimView initComponentHostView(@NonNull Context context) {
+        return new FmRefreshAnimView(context);
+    }
+
+    @JSMethod
+    public void start() {
+        FmRefreshAnimView hostView = getHostView();
+        if (null != hostView) {
+            getHostView().start();
+        }
+    }
+
+    @JSMethod
+    public void stop() {
+        FmRefreshAnimView hostView = getHostView();
+        if (null != hostView) {
+            getHostView().stop();
+        }
+    }
+
+    @WXComponentProp(name = "progress")
+    public void setProgress(float progress) {
+        FmRefreshAnimView hostView = getHostView();
+        if (null != hostView) {
+            getHostView().setProgress(progress);
+        }
+    }
+}
+```
+
+* 在Application初始化的时候注册组件
+* 示例如下（已省略无关代码）：
+
+```java
+SDKEngine.asyncInitialize(sInstance, config, new SDKEngine.InitListener() {
+    @Override
+    public void onSuccess() {
+        //初始化成功
+        try {
+            SDKEngine.registerComponent("FmRefreshAnim", FmRefreshAnim.class);
+        } catch (WXException e) {
+            e.printStackTrace();
+        }
+    }
+});
+```
+
+* 在template标签中需要的地方放置你的组件，并且设置ref引用，注意一定要给组件设置样式，决定组件的宽高跟布局位置。
+* 可以给自定义组件设置属性，或者调用组件对外提供的JS方法。
+* 示例如下（已省略无关代码）：
+
+```html
+<template>
+    <div>
+        <FmRefreshAnim ref="refresh" class="refresh" :progress="progress"></FmRefreshAnim>
+    </div>
+</template>
+
+<style>
+    .refresh {
+        width: 34px;
+        height: 34px;
+    }
+</style>
+
+<script>
+    export default {
+        data() {
+            return {
+                progress: 0,
+            };
+        },
+        methods: {
+            /**
+             * 设置下拉新动画进度
+             * @param progress 进度0-99
+             */
+            setProgress(progress) {
+                this.progress = progress;
+            },
+            /**
+             * 开始刷新,循环播放
+             */
+            start() {
+                this.$refs.refresh.start();
+            },
+            /**
+             * 停止刷新,停止动画
+             */
+            stop() {
+                this.$refs.refresh.stop();
+            },
+    };
+</script>
+```
+
+### 3.3 Weex的模块（Module）
+
+* Weex提供了一些列的内置模块给我们使用：
+
+![Weex内置模块](https://upload-images.jianshu.io/upload_images/2570030-f2165333e332b017.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+* Creator SDK中也提供了一下扩展模块给我们使用：
+
+![Creator SDK中的扩展模块](![Creator SDK中的模块](https://upload-images.jianshu.io/upload_images/2570030-484f64a59ff931c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240))
+
+组件的使用参考链接：
+
+[官方文档](https://weex.apache.org/zh/docs/modules/animation.html)
+[Creator SDK官方文档](http://apps.flyme.cn/docs/book.html?bookId=59df3445a5a0a611eee9f119&doc=59df4a6267e2271c7fc46b38)
+
+### 3.4 自定义模块（Module）
+
+* 继承WXModule，通过添加@JSMethod注解对外提供JS方法，其中uiThread是指定执行的线程是否为UI线程，默认为true
+* 如果是复杂的参数，可以通过JSON来传递
+* 示例如下（已省略无关代码）：
+
+```java
+public class TestModule extends WXModule {
+
+    public static final String TAG = "TestModule";
+
+
+    @JSMethod(uiThread = false)
+    public List<String> query(String tableName, int limit, int offset) {
+
+    }
+
+
+    @JSMethod(uiThread = false)
+    public void insert(String tableName, String jsonStr) {
+
+    }
+
+    @JSMethod(uiThread = true)
+    public void showToast(String message) {
+        Toast.makeText(mWXSDKInstance.getContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+}
+```
+
+* 在Application初始化的时候注册模块
+* 示例如下（已省略无关代码）：
+
+```java
+SDKEngine.asyncInitialize(sInstance, config, new SDKEngine.InitListener() {
+    @Override
+    public void onSuccess() {
+        //初始化成功
+        try {
+            SDKEngine.registerModule("test", TestModule.class);
+        } catch (WXException e) {
+            e.printStackTrace();
+        }
+    }
+});
+```
+
+* 在Vue里面使用模块
+* 示例如下（已省略无关代码）：
+
+```js
+var test = weex.requireModule('test');
+test.showToast('Hello World');
+```
