@@ -1,3 +1,7 @@
+![Weex从入门到放弃](https://upload-images.jianshu.io/upload_images/2570030-2415165f8bef3675.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+### 1. Weex基本介绍与开发环境搭建
+
 #### 1.1 常见跨平台开发方案对比
 
 ![Flutter、Weex、React Native和Android原生对比](https://img-blog.csdn.net/20180927194910311?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2pvaG5XY2hldW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
@@ -103,8 +107,6 @@ dependencies {
     implementation "com.meizu.creator.commons:creatorsdk:${versions.flyme_creator}"
 }
 ```
-
-
     
 2. 配置混淆规则：
 ```proguard
@@ -212,6 +214,8 @@ public class MainActivity extends AppCompatActivity implements IWXRenderListener
 ```
 
 6. 运行项目，查看效果
+
+### 2. Weex需要的Vue核心知识入门
 
 #### 2.1 Vue基本介绍
 
@@ -370,6 +374,8 @@ v-bind:argument="expression"
 ### 3.1 Weex中的基本概念
 
 ![Weex扩展机制](https://upload-images.jianshu.io/upload_images/2570030-1832a3877167ea52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+### 3. Weex的组件和模块入门
 
 ### 3.2 Weex的组件（Component）
 
