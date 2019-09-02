@@ -229,7 +229,7 @@ public class MainActivity extends AppCompatActivity implements IWXRenderListener
 
 最简单的示例：
 
-```vue
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -279,7 +279,7 @@ Vue.js的指令是以v-开头的，它们作用于HTML元素，指令提供了�
 
 * v-if是条件渲染指令，它根据表达式的真假来删除和插入元素，基本语法如下：
 
-```vue
+```html
 v-if="expression"
 v-show="expression"
 ```
@@ -311,7 +311,7 @@ v-show="expression"
 
 * v-for指令基于一个数组渲染一个列表，它和JavaScript的遍历语法相似：
 
-```vue
+```html
 v-for="item in items"
 ```
 
@@ -322,7 +322,7 @@ v-for="item in items"
 * v-bind指令可以在其名称后面带一个参数，中间放一个冒号隔开，这个参数通常是HTML元素的特性（attribute），例如：v-bind:class
 * 基本语法如下：
 
-```vue
+```html
 v-bind:argument="expression"
 :argument="expression"
 ```
