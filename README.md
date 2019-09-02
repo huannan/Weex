@@ -516,7 +516,7 @@ SDKEngine.asyncInitialize(sInstance, config, new SDKEngine.InitListener() {
 
 * Creator SDK中也提供了一下扩展模块给我们使用：
 
-![Creator SDK中的扩展模块](![Creator SDK中的模块](https://upload-images.jianshu.io/upload_images/2570030-484f64a59ff931c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240))
+![Creator SDK中的扩展模块](https://upload-images.jianshu.io/upload_images/2570030-484f64a59ff931c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 组件的使用参考链接：
 
