@@ -595,3 +595,12 @@ SDKEngine.asyncInitialize(sInstance, config, new SDKEngine.InitListener() {
 var test = weex.requireModule('test');
 test.showToast('Hello World');
 ```
+
+### 总结
+
+通过上面的学习，我们学会了：
+
+1. Weex的基本概念，Weex开发环境搭建与项目创建、运行
+2. 读懂Weex代码其实也就是Vue代码，因此第二部分着重介绍了开发、阅读代码过程中最重要的Vue知识
+3. 最后我们学习了Weex中最重要的相关概念（类似Android中的四大组件），组件跟模块，掌握了这两个知识，基本能完成大部分需求
+4. TIPS：学习过程中可以类比Android的知识；另外，Vue跟Weex的知识点还有很多，本文只挑选了一些核心的入门知识来讲，有兴趣的朋友可以深入学习
