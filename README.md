@@ -355,9 +355,9 @@ v-bind:argument="expression"
 * 每个Vue实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到DOM并在数据变化时更新DOM等。同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给了用户在不同阶段添加自己的代码的机会。
 * 不需要立马弄明白所有的东西，不过随着你的不断学习和使用，它的参考价值会越来越高。
 
-[Vue的生命周期](https://cn.vuejs.org/images/lifecycle.png)
+![Vue的生命周期](https://cn.vuejs.org/images/lifecycle.png)
 
-[Vue的生命周期](https://segmentfault.com/img/bV9x3u?w=835&h=544)
+![Vue的生命周期](https://segmentfault.com/img/bV9x3u?w=835&h=544)
 
 ### 2.5 Vue的组件（Component）
 
