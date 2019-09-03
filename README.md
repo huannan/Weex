@@ -371,11 +371,11 @@ v-bind:argument="expression"
 
 * 组件可以扩展HTML元素，封装可重用的HTML代码，我们可以将组件看作自定义的HTML元素。
 
+### 3. Weex的组件和模块入门
+
 ### 3.1 Weex中的基本概念
 
 ![Weex扩展机制](https://upload-images.jianshu.io/upload_images/2570030-1832a3877167ea52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-### 3. Weex的组件和模块入门
 
 ### 3.2 Weex的组件（Component）
 
